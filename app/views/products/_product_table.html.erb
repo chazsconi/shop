@@ -1,0 +1,18 @@
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Destroy</th>
+	</thead>
+	<tbody>
+		<% @category.products.each do |product| %>
+		<tr>
+			<td> <%= product.name %> </td>
+			<td> <%= product.price %> </td>
+			<td> <%= link_to 'Destroy', [product.category, product],
+        :confirm => 'Are you sure?',
+        :method => :delete %> </td>
+		</tr>
+		<% end%>
+	</tbody>
+</table>
