@@ -24,6 +24,14 @@ class TagsControllerTest < ActionController::TestCase
     assert_redirected_to tag_path(assigns(:tag))
   end
 
+  test "should fail to create tag" do
+    assert_no_difference('Tag.count') do
+      post :create, tag: { name: ''}
+    end
+
+    assert_response :success
+  end
+
   test "should show tag" do
     get :show, id: @tag
     assert_response :success
@@ -34,10 +42,16 @@ class TagsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should fail to update tag" do
+    put :update, id: @tag, tag: { name: ''}
+    assert_response :success
+  end
+
   test "should update tag" do
     put :update, id: @tag, tag: { name: @tag.name }
     assert_redirected_to tag_path(assigns(:tag))
   end
+
 
   test "should destroy tag" do
     assert_difference('Tag.count', -1) do

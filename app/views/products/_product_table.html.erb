@@ -6,13 +6,16 @@
 	</thead>
 	<tbody>
 		<% @category.products.each do |product| %>
-		<tr>
-			<td> <%= product.name %> </td>
-			<td> <%= product.price %> </td>
-			<td> <%= link_to 'Destroy', [product.category, product],
-        :confirm => 'Are you sure?',
-        :method => :delete %> </td>
-		</tr>
+			<%if product.id !=nil %>
+			<tr>
+				<td> <%= product.name %> </td>
+				<td> <%= product.price %> </td>
+				<td><%= link_to 'Show', [product.category, product] %></td>
+				<td> <%= link_to 'Destroy', [product.category, product],
+	        :confirm => 'Are you sure?',
+	        :method => :delete %> </td>
+			</tr>
+			<% end%>
 		<% end%>
 	</tbody>
 </table>

@@ -1,9 +1,15 @@
 Eshop::Application.routes.draw do
-  resources :tags
+  #resources :variants
 
-  resources :categories do
-    resources :products
+  resources :tags
+  
+  resources :products do
+     resources :variants
   end
+
+#  resources :categories do
+#    resources :products
+#  end
 
   get "home/index"
 

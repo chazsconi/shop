@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @variant.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_variant_path(@variant.product, @variant) %>
+<%= link_to 'Back', product_path(@variant.product) %>

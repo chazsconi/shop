@@ -17,14 +17,19 @@
 
 <p>
   <b>Vatexempt:</b>
-  <%= @product.VATexempt %>
+  <%= @product.VAT_exempt %>
 </p>
 
 <p>
   <b>Category:</b>
-  <%= @product.category %>
+  <%= @product.category.name %>
 </p>
 
+<h2>Variants</h2>
+<%= render :partial => "variants/variants_table", :locals => {:variants => @product.variants} %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+
+<%= link_to 'New Variant', new_product_variant_path(@product) %>
+
+<%#= link_to 'Edit', edit_product_path(@product) %>
 <%= link_to 'Back', products_path %>
