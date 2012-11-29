@@ -16,3 +16,5 @@
 
 # Ignore all coverage reports
 /coverage
+
+logger.txt
