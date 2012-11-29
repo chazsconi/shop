@@ -20,11 +20,6 @@
   <%= @product.VAT_exempt %>
 </p>
 
-<p>
-  <b>Category:</b>
-  <%= @product.category.name %>
-</p>
-
 <h2>Variants</h2>
 <%= render :partial => "variants/variants_table", :locals => {:variants => @product.variants} %>
 

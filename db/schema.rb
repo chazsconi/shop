@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20121129133526) do
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -26,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20121129133526) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "VAT_exempt"
-    t.integer  "category_id"
   end
 
   create_table "products_tags", :id => false, :force => true do |t|
