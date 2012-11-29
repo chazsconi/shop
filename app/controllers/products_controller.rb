@@ -61,10 +61,13 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
+    #if no tags are passed, set to an empty array
+    params[:product][:tag_ids] ||= []
+    
     @product = Product.find(params[:id])
-
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        logger.info("Updating tag_ids="+params[:tag_ids].to_s)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else

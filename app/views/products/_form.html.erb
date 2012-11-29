@@ -31,7 +31,7 @@
 
   <div class="field">
   <%= f.label :tags %><br />
-  <%= select_tag("tag_ids[]", options_for_select(Tag.find(:all).collect{ |tag| [tag.name, tag.id]},
+  <%= select_tag("product[tag_ids][]", options_for_select(Tag.find(:all).collect{ |tag| [tag.name, tag.id]},
   				@product.tags.collect { |tag| tag.id}),{:multiple=>true}) %>  	
   </div>
   <div class="actions">
