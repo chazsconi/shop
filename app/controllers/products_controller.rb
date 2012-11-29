@@ -63,6 +63,7 @@ class ProductsController < ApplicationController
   def update
     #if no tags are passed, set to an empty array
     params[:product][:tag_ids] ||= []
+    params[:product][:variant_option_type_ids] ||= []
     
     @product = Product.find(params[:id])
     respond_to do |format|

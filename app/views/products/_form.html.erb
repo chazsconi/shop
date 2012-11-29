@@ -28,18 +28,24 @@
     <%= f.label :VAT_exempt %><br />
     <%= f.text_field :VAT_exempt %>
   </div>
-
   <div class="field">
-  <%= f.label :variant_option_types %><br />
-  <%= select_tag("variant_option_type_ids[]", options_for_select(VariantOptionType.find(:all).collect{ |vot| [vot.name, vot.id]},
-  				@product.variant_option_types.collect { |vot| vot.id}),{:multiple=>true}) %>  	
+  <%= f.label :variant_option_types%>
+  <% for vot in VariantOptionType.find(:all) %>
+  <div>
+	<%= check_box_tag "product[variant_option_type_ids][]", vot.id, @product.variant_option_types.include?(vot) %>
+	<%= vot.name %>
   </div>
+  <% end %>
+  </div>
+
 
   <div class="field">
   <%= f.label :tags %><br />
   <%= select_tag("product[tag_ids][]", options_for_select(Tag.find(:all).collect{ |tag| [tag.name, tag.id]},
   				@product.tags.collect { |tag| tag.id}),{:multiple=>true}) %>  	
   </div>
+    
+  
   <div class="actions">
     <%= f.submit %>
   </div>
