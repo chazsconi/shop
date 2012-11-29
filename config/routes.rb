@@ -7,9 +7,6 @@ Eshop::Application.routes.draw do
      resources :variants
   end
 
-#  resources :categories do
-#    resources :products
-#  end
 
   get "home/index"
 
