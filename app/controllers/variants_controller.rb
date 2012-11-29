@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
-  # GET /variants
-  # GET /variants.json
+  # GET /products/1/variants
+  # GET /products/1/variants.json
   def index
     @variants = Variant.all
 
