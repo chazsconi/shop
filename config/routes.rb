@@ -1,4 +1,8 @@
 Eshop::Application.routes.draw do
+  resources :variant_option_type_values do as_routes end
+
+  resources :variant_option_types do as_routes end
+
   #resources :variants
 
   resources :tags

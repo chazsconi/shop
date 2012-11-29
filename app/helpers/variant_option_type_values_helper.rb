@@ -1,0 +1,2 @@
+module VariantOptionTypeValuesHelper
+end

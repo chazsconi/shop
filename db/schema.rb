@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127191747) do
+ActiveRecord::Schema.define(:version => 20121129133526) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,24 @@ ActiveRecord::Schema.define(:version => 20121127191747) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "variant_option_type_values", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "variant_option_type_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "variant_option_type_values", ["variant_option_type_id"], :name => "index_variant_option_type_values_on_variant_option_type_id"
+
+  create_table "variant_option_types", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "display_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "variants", :force => true do |t|

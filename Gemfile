@@ -37,4 +37,5 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+gem 'active_scaffold'
 gem 'simplecov', :require => false, :group => :test
