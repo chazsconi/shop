@@ -30,6 +30,12 @@
   </div>
 
   <div class="field">
+  <%= f.label :variant_option_types %><br />
+  <%= select_tag("variant_option_type_ids[]", options_for_select(VariantOptionType.find(:all).collect{ |vot| [vot.name, vot.id]},
+  				@product.variant_option_types.collect { |vot| vot.id}),{:multiple=>true}) %>  	
+  </div>
+
+  <div class="field">
   <%= f.label :tags %><br />
   <%= select_tag("tag_ids[]", options_for_select(Tag.find(:all).collect{ |tag| [tag.name, tag.id]},
   				@product.tags.collect { |tag| tag.id}),{:multiple=>true}) %>  	
