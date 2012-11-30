@@ -20,6 +20,15 @@
   <%= @product.VAT_exempt %>
 </p>
 
+<h2>Product varies by</h2>
+
+<% if @product.variant_option_types!=nil%>
+<% 	@product.variant_option_types.each do |vot| %>
+	<p><%=vot.name%> <em>(shown as <%=vot.display_name%></em>)</p>
+<% end %>
+<% end %>
+
+
 <h2>Variants</h2>
 <%= render :partial => "variants/variants_table", :locals => {:variants => @product.variants} %>
 
