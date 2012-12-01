@@ -17,6 +17,31 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     
+    @possible_variants = []
+
+    #Create a list of lists for the options
+    vot_list = []    
+    @product.variant_option_types.each do |vot|
+        votv_list = []
+        vot.variant_option_type_values.each do |votv|
+            votv_list << votv.name
+        end
+        vot_list << votv_list
+    end
+
+
+ #Create the cross join of all possibilities
+    if !vot_list.empty?
+      all_variants = vot_list[0].product(*vot_list[1..-1])
+
+      all_variants.each do |v|
+        @possible_variants << {:vos=>v, :code=>"ABC/"+v*"/"}
+      end
+
+    end
+
+    logger.debug "possible_variants="+@possible_variants.to_s          
+         
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -83,7 +108,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    @product.destroy  
 
     respond_to do |format|
       format.html { redirect_to products_url }
