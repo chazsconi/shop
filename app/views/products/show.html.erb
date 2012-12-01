@@ -28,6 +28,26 @@
 <% end %>
 <% end %>
 
+<h2>Possible variants</h2>
+<table>
+	<tr>
+	
+	<% 	@product.variant_option_types.each do |vot| %>		
+	<th><%=vot.display_name%></th>
+	<% end %>
+	
+	<th>Product Code</th>
+	</tr>
+<% 	@possible_variants.each do |v| %>
+<tr>
+	<% v[:vos].each do |vo| %>
+	<td><%=vo%></td>
+	<% end %>
+	<td><%=v[:code]%></td>
+</tr>	
+<% end %>
+
+
 
 <h2>Variants</h2>
 <%= render :partial => "variants/variants_table", :locals => {:variants => @product.variants} %>
