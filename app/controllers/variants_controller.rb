@@ -43,7 +43,7 @@ class VariantsController < ApplicationController
   end
  
  
- # POST /variants
+  # POST /variants
   # POST /variants.json
   def create
 
@@ -66,7 +66,17 @@ class VariantsController < ApplicationController
 
   end
 
-
+  #Adds variants to the product
+  def add
+     logger.info("Calling ADD")
+     @product = Product.find(params[:product_id])
+     
+     params[:variant_option_values].each do |vov|
+        variant = @product.variants.create(:code=>vov)
+        variant.save  
+     end          
+     redirect_to product_path(@product)
+  end
 
 
   # PUT /variants/1

@@ -29,6 +29,7 @@
 <% end %>
 
 <h2>Possible variants</h2>
+<%= form_tag add_product_variants_path(@product) do |f| %>
 <table>
 	<tr>
 	
@@ -36,17 +37,19 @@
 	<th><%=vot.display_name%></th>
 	<% end %>
 	
-	<th>Product Code</th>
+	<th>Select</th>
 	</tr>
 <% 	@possible_variants.each do |v| %>
 <tr>
 	<% v[:vos].each do |vo| %>
 	<td><%=vo%></td>
 	<% end %>
-	<td><%=v[:code]%></td>
+	<td><%= check_box_tag "variant_option_values[]", v[:code] %></td>
 </tr>	
 <% end %>
-
+</table>
+<%= submit_tag 'Add Variants'%>
+<% end %>
 
 
 <h2>Variants</h2>

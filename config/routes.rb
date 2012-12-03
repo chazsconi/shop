@@ -8,7 +8,9 @@ Eshop::Application.routes.draw do
   resources :tags
   
   resources :products do
-     resources :variants
+     resources :variants do
+        post 'add', :on => :collection
+     end
   end
 
 

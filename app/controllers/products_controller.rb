@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
       all_variants = vot_list[0].product(*vot_list[1..-1])
 
       all_variants.each do |v|
-        @possible_variants << {:vos=>v, :code=>"ABC/"+v*"/"}
+        @possible_variants << {:vos=>v, :code=> v*"/"}
       end
 
     end
